@@ -155,7 +155,7 @@
     dest:   '/etc/ssh/sshd_config'
     owner:  'root'
     group:  'root'
-    mode:   '0644'
+    mode:   "{{ sshd__sshd_config_mode |default('0644') }}"
   notify: [ 'Test sshd configuration and restart' ]
   tags: [ 'role::sshd:config' ]
 

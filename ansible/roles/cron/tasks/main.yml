@@ -51,7 +51,7 @@
   ansible.builtin.template:
     src: 'etc/crontab.j2'
     dest: '/etc/crontab'
-    mode: '0644'
+    mode: "{{ cron__crontab_mode |default('0644') }}"
   when: cron__enabled | bool and
         cron__crontab_deploy_state == 'present'
   tags: [ 'role::cron:crontab' ]
